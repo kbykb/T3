@@ -129,7 +129,7 @@ toolCall:
   enabled: false
   tasks: false
   
-api-key:
+API_KEY:
   enabled: true
   key: "ljp123456"
 # 图片放大，domain需要公网可访问的地址
