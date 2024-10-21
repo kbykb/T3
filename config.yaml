@@ -1,0 +1,136 @@
+# 内部转发请求配置，0值为无超时 单位为秒
+# connTimeout: 用户连接超时
+# idleConnTimeout: 空闲连接超时
+# responseHeaderTimeout: 响应头超时
+server-conn:
+  connTimeout: 0
+  idleConnTimeout: 0
+  responseHeaderTimeout: 0
+
+white-addr:
+#  - '127.0.0.1'
+#  - 'xxx.xxx.xxx.xxx'
+
+# 开启特殊标记增强
+flags: true
+
+# 图片访问
+domain: "https://chat-completion-chatgpt-adapter.hf.space"
+
+# 内调llm，用于绘图时文本转tags
+llm:
+  baseUrl: "http://127.0.0.1:7860"
+  model: "bing"
+  token: "xxx"
+
+# lmsys fn、 trigger
+lmsys: [49 , 109]
+
+# hf 绘图接口配置化
+# 若旧接口不可用，可以到huggingface上查找同类型的接口配置
+# 参数替换：{{prompt}}、{{negative_prompt}}、{{sampler}}、{{style}}、{{seed}}
+hf:
+#  animagine-xl-3.1:
+#    baseUrl: https://boboiazumi-animagine-xl-3-1.hf.space
+#    fn: [5, 61]
+#    data: '[
+#      "{{prompt}}",
+#      "{{negative_prompt}}",
+#      {{seed}},
+#      1024,
+#      1024,
+#      8,
+#      35,
+#      "{{sampler}}",
+#      "1024 x 1024",
+#      "{{style}}",
+#      "Standard v3.1",
+#      true,
+#      0.55,
+#      1.5,
+#      false,
+#      false,
+#      null,
+#      0.65
+#    ]'
+#  dalle-4k:
+#    baseUrl: https://mukaist-dalle-4k.hf.space
+#  dalle-3-xl:
+#    baseUrl: https://ehristoforu-dalle-3-xl-lora-v2.hf.space
+
+# gemini 自定义安全设置
+google:
+#  safes:
+#    - category: HARM_CATEGORY_HARASSMENT
+#      threshold: BLOCK_NONE
+
+bing:
+  baseUrl: "https://edgeservices.bing.com/edgesvc"
+
+claude:
+  pad: 0
+  cookies:
+    - 'xxx1'
+    - 'xxx2'
+
+you:
+  helper: 8082
+  notice: "Creative Writing Mode"
+  cookies:
+    - 'uuid_guest=d4bb3b23-7555-4a0c-9420-2acef6832fef; safesearch_guest=Moderate; youchat_personalization=true; youchat_smart_learn=true; _gcl_au=1.1.1981590877.1727967892; _ga=GA1.1.1974389141.1727967893; FPAU=1.1.1981590877.1727967892; has_closed_zero_gate=true; AF_DEFAULT_MEASUREMENT_STATUS=true; afUserId=ed05b75f-7d0a-4e29-a762-ec104c2ec326-p; AF_SYNC=1729083862457; has_dismissed_teams_welcome=true; ai_model=claude_3_5_sonnet; safesearch_01330550797d5410e2a79fe798201eebef570a0785dd341ebfc97b4c52c15c2d=Moderate; guest_has_seen_legal_disclaimer=true; total_query_count=2; _clck=tw9g9f%7C2%7Cfq7%7C0%7C1737; FPLC=6D3k%2BUJ4cY9K%2BsCFewVQZpebEynSSb3Onqk6%2BCUqwimEfUKy6qJ3E8pc6lrWNsuJMiYbnOvmjpDjmwqHCQI%2BsDSwskAs9GbMCbu6uFeJIslcPja5zL3QgaOiNgqFLg%3D%3D; youpro_subscription=false; safesearch_068ecec2a84d4f90e56ceddae6e2054db0aed72987d76bba8b4ecb713304694b=Moderate; you_subscription=freemium; safesearch_0f63925085f31b13bbd50fd81d3a5c5e5dd45290d7bd51574f40c16da5d118df=Moderate; safesearch_66dd0a2192140dc26483baa90d0b64ff291d3f5403bff56991147252d33f2616=Moderate; daily_query_count=0; daily_query_date=Mon%20Oct%2021%202024; cf_chl_rc_m=7; safesearch_fcb490655759b648d56b84be77518972b4fd3cd8879cf66dc12aa26c82555274=Moderate; FPGSID=1.1729516623.1729516920.G-WYGVQX1R23.4yXVd0dhMB_hyT41w8psFQ; _ga_2N7ZM9C56V=GS1.1.1729516185.11.1.1729517163.0.0.173507875; ab.storage.deviceId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3Ac069d3fb-2897-935a-87d5-0cdec08a86df%7Ce%3Aundefined%7Cc%3A1727967885264%7Cl%3A1729517179779; ab.storage.userId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3AU2nkVh6H1Fdl3QV2y1UxcVnTUnDy%7Ce%3Aundefined%7Cc%3A1729517179778%7Cl%3A1729517179779; safesearch_85b8c82e924ecc0e1a6bc3757260b402059fd896bf406ca02e5eedad1b50e094=Moderate; ld_context=%7B%22kind%22%3A%22user%22%2C%22key%22%3A%22d4bb3b23-7555-4a0c-9420-2acef6832fef%22%2C%22email%22%3A%22c8cxgxkx%40example.com%22%2C%22country%22%3A%22JP%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F130.0.0.0%20Safari%2F537.36%22%2C%22secUserAgent%22%3A%22%5C%22Chromium%5C%22%3Bv%3D%5C%22130%5C%22%2C%20%5C%22Google%20Chrome%5C%22%3Bv%3D%5C%22130%5C%22%2C%20%5C%22Not%3FA_Brand%5C%22%3Bv%3D%5C%2299%5C%22%22%7D; _clsk=1k91koz%7C1729517181649%7C12%7C1%7Ci.clarity.ms%2Fcollect; ab.storage.sessionId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3A4848956d-4bb3-e604-c9e8-7594736005e2%7Ce%3A1729518981868%7Cc%3A1729517179778%7Cl%3A1729517181868; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiJjOGN4Z3hreEBleGFtcGxlLmNvbSIsImV4cCI6MTczMTkzNjM4MCwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5NTE3MTgwLCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoiYzhjeGd4a3hAZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjBUMTM6MjY6MjBaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybmtWaDZIMUZkbDNRVjJ5MVV4Y1ZuVFVuRHkiLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJua1ZoNkgxRmRsM1FWMnkxVXhjVm5UVW5EeSIsInZlcmlmaWVkRW1haWwiOnRydWV9.CBwTc5-qIJPiHckDixSSupXgVtT7zmeGFh_0CpDeDvkD52bLn62xE1C3e1FtVEFoDOdmuWSf3JdJhcjDDT4sMil-in6unW_FHaGkV4Ml1K0EV6qjn9R1tnhq9uG1FTfb4_rkvCT12u0rNJD4n7b6arT2R10pMrhSlD7BBm99t-djnacAfDrXFQhwi35x1KsrM5mmNbB4bY-yjIZ47-rpQXGgFVdACVu8XSK1yS_4gE6N5v586xZuhCKE47uw9pveD63u51lhOUjyvuTXLV5wvjUL-1fvuQjI_fIqD2ktN4xg6U_ap5YW_UhvpvLhTXxgNmCCaJj89e4VqMeTsJS9tQ'
+    - 'uuid_guest=d4bb3b23-7555-4a0c-9420-2acef6832fef; safesearch_guest=Moderate; youchat_personalization=true; youchat_smart_learn=true; _gcl_au=1.1.1981590877.1727967892; _ga=GA1.1.1974389141.1727967893; FPAU=1.1.1981590877.1727967892; has_closed_zero_gate=true; AF_DEFAULT_MEASUREMENT_STATUS=true; afUserId=ed05b75f-7d0a-4e29-a762-ec104c2ec326-p; AF_SYNC=1729083862457; has_dismissed_teams_welcome=true; ai_model=claude_3_5_sonnet; safesearch_01330550797d5410e2a79fe798201eebef570a0785dd341ebfc97b4c52c15c2d=Moderate; guest_has_seen_legal_disclaimer=true; total_query_count=2; _clck=tw9g9f%7C2%7Cfq7%7C0%7C1737; FPLC=6D3k%2BUJ4cY9K%2BsCFewVQZpebEynSSb3Onqk6%2BCUqwimEfUKy6qJ3E8pc6lrWNsuJMiYbnOvmjpDjmwqHCQI%2BsDSwskAs9GbMCbu6uFeJIslcPja5zL3QgaOiNgqFLg%3D%3D; youpro_subscription=false; safesearch_068ecec2a84d4f90e56ceddae6e2054db0aed72987d76bba8b4ecb713304694b=Moderate; you_subscription=freemium; safesearch_0f63925085f31b13bbd50fd81d3a5c5e5dd45290d7bd51574f40c16da5d118df=Moderate; safesearch_66dd0a2192140dc26483baa90d0b64ff291d3f5403bff56991147252d33f2616=Moderate; daily_query_count=0; daily_query_date=Mon%20Oct%2021%202024; cf_chl_rc_m=7; safesearch_fcb490655759b648d56b84be77518972b4fd3cd8879cf66dc12aa26c82555274=Moderate; safesearch_85b8c82e924ecc0e1a6bc3757260b402059fd896bf406ca02e5eedad1b50e094=Moderate; FPGSID=1.1729516623.1729517186.G-WYGVQX1R23.4yXVd0dhMB_hyT41w8psFQ; _clsk=1k91koz%7C1729517205629%7C13%7C1%7Ci.clarity.ms%2Fcollect; ab.storage.deviceId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3Ac069d3fb-2897-935a-87d5-0cdec08a86df%7Ce%3Aundefined%7Cc%3A1727967885264%7Cl%3A1729517205635; ab.storage.userId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3AU2nkVkFMcMP2JfpmRefORBUw3elW%7Ce%3Aundefined%7Cc%3A1729517205634%7Cl%3A1729517205635; safesearch_669dc3b9764772d3ef4eae76a35f1bfc1ec19e0cd2ad0b509bc88f3d9f87e90d=Moderate; ld_context=%7B%22kind%22%3A%22user%22%2C%22key%22%3A%22d4bb3b23-7555-4a0c-9420-2acef6832fef%22%2C%22email%22%3A%22j94s8g0v%40example.com%22%2C%22country%22%3A%22JP%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F130.0.0.0%20Safari%2F537.36%22%2C%22secUserAgent%22%3A%22%5C%22Chromium%5C%22%3Bv%3D%5C%22130%5C%22%2C%20%5C%22Google%20Chrome%5C%22%3Bv%3D%5C%22130%5C%22%2C%20%5C%22Not%3FA_Brand%5C%22%3Bv%3D%5C%2299%5C%22%22%7D; ab.storage.sessionId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3A0ef05905-69fb-c296-a251-1d8ab069d2f7%7Ce%3A1729519006746%7Cc%3A1729517205635%7Cl%3A1729517206746; _ga_2N7ZM9C56V=GS1.1.1729516185.11.1.1729517206.0.0.173507875; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiJqOTRzOGcwdkBleGFtcGxlLmNvbSIsImV4cCI6MTczMTkzNjQwNSwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5NTE3MjA1LCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoiajk0czhnMHZAZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjBUMTM6MjY6NDVaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybmtWa0ZNY01QMkpmcG1SZWZPUkJVdzNlbFciLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJua1ZrRk1jTVAySmZwbVJlZk9SQlV3M2VsVyIsInZlcmlmaWVkRW1haWwiOnRydWV9.BKFWiHriX0Fz8T3J00v2FoKe5hYcll5IPUaOKgHIomvG-eVPJi3KQfC4oncvEEikF_RCzEuWN6PtbX4X59e1hyPhijIs87a4xJokUi0PJCFgXci_98pIEJ8rEzihPkqmsTeggjdtEBT_htC8W-xUew7lxoGFzde4lsF4mLUGKW_huIDlRi1Byw09K_mxV0mu89PJalrHOvZCqILzHZ-r24n71QoIqTLbpAoMQ02kPCvZ6insg4MqLKQeE6tSWi-IvXIUeYEG6QjAyk0mce_vJ_xxyPH9Pv31A0MgQSH1792-zL0aC_BDNEPjcD-sihfqdYqt8WGAUG17vauh3F-hEA'
+    - 'uuid_guest=d4bb3b23-7555-4a0c-9420-2acef6832fef; safesearch_guest=Moderate; youchat_personalization=true; youchat_smart_learn=true; _gcl_au=1.1.1981590877.1727967892; _ga=GA1.1.1974389141.1727967893; FPAU=1.1.1981590877.1727967892; has_closed_zero_gate=true; AF_DEFAULT_MEASUREMENT_STATUS=true; afUserId=ed05b75f-7d0a-4e29-a762-ec104c2ec326-p; AF_SYNC=1729083862457; has_dismissed_teams_welcome=true; ai_model=claude_3_5_sonnet; safesearch_01330550797d5410e2a79fe798201eebef570a0785dd341ebfc97b4c52c15c2d=Moderate; guest_has_seen_legal_disclaimer=true; total_query_count=2; _clck=tw9g9f%7C2%7Cfq7%7C0%7C1737; FPLC=6D3k%2BUJ4cY9K%2BsCFewVQZpebEynSSb3Onqk6%2BCUqwimEfUKy6qJ3E8pc6lrWNsuJMiYbnOvmjpDjmwqHCQI%2BsDSwskAs9GbMCbu6uFeJIslcPja5zL3QgaOiNgqFLg%3D%3D; youpro_subscription=false; safesearch_068ecec2a84d4f90e56ceddae6e2054db0aed72987d76bba8b4ecb713304694b=Moderate; you_subscription=freemium; safesearch_0f63925085f31b13bbd50fd81d3a5c5e5dd45290d7bd51574f40c16da5d118df=Moderate; safesearch_66dd0a2192140dc26483baa90d0b64ff291d3f5403bff56991147252d33f2616=Moderate; daily_query_count=0; daily_query_date=Mon%20Oct%2021%202024; cf_chl_rc_m=7; safesearch_fcb490655759b648d56b84be77518972b4fd3cd8879cf66dc12aa26c82555274=Moderate; safesearch_85b8c82e924ecc0e1a6bc3757260b402059fd896bf406ca02e5eedad1b50e094=Moderate; FPGSID=1.1729516623.1729517186.G-WYGVQX1R23.4yXVd0dhMB_hyT41w8psFQ; safesearch_669dc3b9764772d3ef4eae76a35f1bfc1ec19e0cd2ad0b509bc88f3d9f87e90d=Moderate; ab.storage.deviceId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3Ac069d3fb-2897-935a-87d5-0cdec08a86df%7Ce%3Aundefined%7Cc%3A1727967885264%7Cl%3A1729517228472; ab.storage.userId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3AU2nkVnR9JV9aKYpsKdp3zIdbObNP%7Ce%3Aundefined%7Cc%3A1729517228471%7Cl%3A1729517228472; safesearch_384f2c7decb3236704c906d72bfb199da109f36b74f9d3a14b339b53448e3edf=Moderate; ld_context=%7B%22kind%22%3A%22user%22%2C%22key%22%3A%22d4bb3b23-7555-4a0c-9420-2acef6832fef%22%2C%22email%22%3A%22q5aayovn%40example.com%22%2C%22country%22%3A%22JP%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F130.0.0.0%20Safari%2F537.36%22%2C%22secUserAgent%22%3A%22%5C%22Chromium%5C%22%3Bv%3D%5C%22130%5C%22%2C%20%5C%22Google%20Chrome%5C%22%3Bv%3D%5C%22130%5C%22%2C%20%5C%22Not%3FA_Brand%5C%22%3Bv%3D%5C%2299%5C%22%22%7D; ab.storage.sessionId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3A2d37eddc-9a12-4cd7-a7f4-3c21ce9f77e6%7Ce%3A1729519032021%7Cc%3A1729517228472%7Cl%3A1729517232021; _ga_2N7ZM9C56V=GS1.1.1729516185.11.1.1729517232.0.0.173507875; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiJxNWFheW92bkBleGFtcGxlLmNvbSIsImV4cCI6MTczMTkzNjQzMSwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5NTE3MjMxLCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoicTVhYXlvdm5AZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjBUMTM6Mjc6MTFaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybmtWblI5SlY5YUtZcHNLZHAzeklkYk9iTlAiLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJua1ZuUjlKVjlhS1lwc0tkcDN6SWRiT2JOUCIsInZlcmlmaWVkRW1haWwiOnRydWV9.Nr1Fg3hBIhkV9F4Wwz13l1pZKwyPmlo2En-TGuorzPF1jv3oEx2qSvFEZX_OSODbhApyMiN46PHcPWMUW_NwJwJmwlPp_fSQwuYVUaidk4LQWt9R4_5jzd0QyOJa5bC8TEaa4XDF15S1PqibgFFOJii0jZ70kwkIX0oZ2deOKSk0usV7Dk9UeXuiZV0oYY7dOS5qP9FK3d-V0oJ8xVM6EhPlGmumpSbA0GQRA1wgm96JOffDNF5gwbv8-Wj1_QimNUVl7lxNN1TNGhuQ02I7ihb6oXc2wtRb--tXMlQ1tCeABrCYtQqWn3OkFQ4j0T3_5cD3uL2PAQ7tD--RjM6Xow; _clsk=1k91koz%7C1729517233653%7C14%7C1%7Ci.clarity.ms%2Fcollect'
+    - 'uuid_guest=d4bb3b23-7555-4a0c-9420-2acef6832fef; safesearch_guest=Moderate; youchat_personalization=true; youchat_smart_learn=true; _gcl_au=1.1.1981590877.1727967892; _ga=GA1.1.1974389141.1727967893; FPAU=1.1.1981590877.1727967892; has_closed_zero_gate=true; AF_DEFAULT_MEASUREMENT_STATUS=true; afUserId=ed05b75f-7d0a-4e29-a762-ec104c2ec326-p; AF_SYNC=1729083862457; has_dismissed_teams_welcome=true; ai_model=claude_3_5_sonnet; safesearch_01330550797d5410e2a79fe798201eebef570a0785dd341ebfc97b4c52c15c2d=Moderate; guest_has_seen_legal_disclaimer=true; total_query_count=2; _clck=tw9g9f%7C2%7Cfq7%7C0%7C1737; FPLC=6D3k%2BUJ4cY9K%2BsCFewVQZpebEynSSb3Onqk6%2BCUqwimEfUKy6qJ3E8pc6lrWNsuJMiYbnOvmjpDjmwqHCQI%2BsDSwskAs9GbMCbu6uFeJIslcPja5zL3QgaOiNgqFLg%3D%3D; youpro_subscription=false; safesearch_068ecec2a84d4f90e56ceddae6e2054db0aed72987d76bba8b4ecb713304694b=Moderate; you_subscription=freemium; safesearch_0f63925085f31b13bbd50fd81d3a5c5e5dd45290d7bd51574f40c16da5d118df=Moderate; safesearch_66dd0a2192140dc26483baa90d0b64ff291d3f5403bff56991147252d33f2616=Moderate; daily_query_count=0; daily_query_date=Mon%20Oct%2021%202024; cf_chl_rc_m=7; safesearch_fcb490655759b648d56b84be77518972b4fd3cd8879cf66dc12aa26c82555274=Moderate; safesearch_85b8c82e924ecc0e1a6bc3757260b402059fd896bf406ca02e5eedad1b50e094=Moderate; safesearch_669dc3b9764772d3ef4eae76a35f1bfc1ec19e0cd2ad0b509bc88f3d9f87e90d=Moderate; safesearch_384f2c7decb3236704c906d72bfb199da109f36b74f9d3a14b339b53448e3edf=Moderate; ab.storage.deviceId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3Ac069d3fb-2897-935a-87d5-0cdec08a86df%7Ce%3Aundefined%7Cc%3A1727967885264%7Cl%3A1729517254476; ab.storage.userId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3AU2nkVqczpD6229nQq6PnAZRMbaro%7Ce%3Aundefined%7Cc%3A1729517254475%7Cl%3A1729517254476; FPGSID=1.1729516623.1729517253.G-WYGVQX1R23.4yXVd0dhMB_hyT41w8psFQ; safesearch_4b92e935a66e67043501a471e9ebfc6b0aa294946d11a360199827c6bf6bf1f8=Moderate; ld_context=%7B%22kind%22%3A%22user%22%2C%22key%22%3A%22d4bb3b23-7555-4a0c-9420-2acef6832fef%22%2C%22email%22%3A%22yr5mzkr2%40example.com%22%2C%22country%22%3A%22JP%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F130.0.0.0%20Safari%2F537.36%22%2C%22secUserAgent%22%3A%22%5C%22Chromium%5C%22%3Bv%3D%5C%22130%5C%22%2C%20%5C%22Google%20Chrome%5C%22%3Bv%3D%5C%22130%5C%22%2C%20%5C%22Not%3FA_Brand%5C%22%3Bv%3D%5C%2299%5C%22%22%7D; ab.storage.sessionId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3Ab814da18-196a-5f31-f677-2aaea9053a8c%7Ce%3A1729519057225%7Cc%3A1729517254476%7Cl%3A1729517257225; _ga_2N7ZM9C56V=GS1.1.1729516185.11.1.1729517257.0.0.173507875; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiJ5cjVtemtyMkBleGFtcGxlLmNvbSIsImV4cCI6MTczMTkzNjQ1NiwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5NTE3MjU2LCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoieXI1bXprcjJAZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjBUMTM6Mjc6MzZaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybmtWcWN6cEQ2MjI5blFxNlBuQVpSTWJhcm8iLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJua1ZxY3pwRDYyMjluUXE2UG5BWlJNYmFybyIsInZlcmlmaWVkRW1haWwiOnRydWV9.kjy5WeJa-jwdTw0ZczIEM5v-8BTldyoIkDzJSIeWS54EHrcLVW1z54ZQEf-O5LYhEOzu5sRQ11LseU7ETOLVJEZpxbDicU-h5DQIJK9r2hKx6WX0ttRtkMxZptwSTLiNXFclik9CF_Sr0B2N8qBKLSd4M7PNtfSU2oO8SqJyt7fQP90ZrhNaemiQR8a8b9dATh3jQk9GCM6mogg0wtyVl2fqOU1WX3T2qKtHo2ppsQPXU87mzut7X4g0le6QKBsLKq9VB6GchwPWwir3u1dwjcUTmIBT1fzjeTIY3YPEh0ragC9tRTANHdcBDnRAp7cO4t6qWUqMJcQ22IqqdaHYzg; _clsk=1k91koz%7C1729517258706%7C18%7C1%7Ci.clarity.ms%2Fcollect'
+    - 'uuid_guest=d4bb3b23-7555-4a0c-9420-2acef6832fef; safesearch_guest=Moderate; youchat_personalization=true; youchat_smart_learn=true; _gcl_au=1.1.1981590877.1727967892; _ga=GA1.1.1974389141.1727967893; FPAU=1.1.1981590877.1727967892; has_closed_zero_gate=true; AF_DEFAULT_MEASUREMENT_STATUS=true; afUserId=ed05b75f-7d0a-4e29-a762-ec104c2ec326-p; AF_SYNC=1729083862457; has_dismissed_teams_welcome=true; ai_model=claude_3_5_sonnet; safesearch_01330550797d5410e2a79fe798201eebef570a0785dd341ebfc97b4c52c15c2d=Moderate; guest_has_seen_legal_disclaimer=true; total_query_count=2; _clck=tw9g9f%7C2%7Cfq7%7C0%7C1737; FPLC=6D3k%2BUJ4cY9K%2BsCFewVQZpebEynSSb3Onqk6%2BCUqwimEfUKy6qJ3E8pc6lrWNsuJMiYbnOvmjpDjmwqHCQI%2BsDSwskAs9GbMCbu6uFeJIslcPja5zL3QgaOiNgqFLg%3D%3D; youpro_subscription=false; safesearch_068ecec2a84d4f90e56ceddae6e2054db0aed72987d76bba8b4ecb713304694b=Moderate; you_subscription=freemium; safesearch_0f63925085f31b13bbd50fd81d3a5c5e5dd45290d7bd51574f40c16da5d118df=Moderate; safesearch_66dd0a2192140dc26483baa90d0b64ff291d3f5403bff56991147252d33f2616=Moderate; daily_query_count=0; daily_query_date=Mon%20Oct%2021%202024; cf_chl_rc_m=7; safesearch_fcb490655759b648d56b84be77518972b4fd3cd8879cf66dc12aa26c82555274=Moderate; safesearch_85b8c82e924ecc0e1a6bc3757260b402059fd896bf406ca02e5eedad1b50e094=Moderate; safesearch_669dc3b9764772d3ef4eae76a35f1bfc1ec19e0cd2ad0b509bc88f3d9f87e90d=Moderate; safesearch_384f2c7decb3236704c906d72bfb199da109f36b74f9d3a14b339b53448e3edf=Moderate; FPGSID=1.1729516623.1729517253.G-WYGVQX1R23.4yXVd0dhMB_hyT41w8psFQ; safesearch_4b92e935a66e67043501a471e9ebfc6b0aa294946d11a360199827c6bf6bf1f8=Moderate; safesearch_cb3d69f88786dc2343065ad375635ba45f9a78fc61dd90c1236c61b67c749966=Moderate; _clsk=1k91koz%7C1729517280480%7C20%7C1%7Ci.clarity.ms%2Fcollect; ld_context=%7B%22kind%22%3A%22user%22%2C%22key%22%3A%22d4bb3b23-7555-4a0c-9420-2acef6832fef%22%2C%22email%22%3A%22yr5mzkr2%40example.com%22%2C%22country%22%3A%22JP%22%2C%22userAgent%22%3A%22Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F130.0.0.0%20Safari%2F537.36%22%2C%22secUserAgent%22%3A%22%5C%22Chromium%5C%22%3Bv%3D%5C%22130%5C%22%2C%20%5C%22Google%20Chrome%5C%22%3Bv%3D%5C%22130%5C%22%2C%20%5C%22Not%3FA_Brand%5C%22%3Bv%3D%5C%2299%5C%22%22%7D; ab.storage.deviceId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3Ac069d3fb-2897-935a-87d5-0cdec08a86df%7Ce%3Aundefined%7Cc%3A1727967885264%7Cl%3A1729517282077; ab.storage.userId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3AU2nkVqczpD6229nQq6PnAZRMbaro%7Ce%3Aundefined%7Cc%3A1729517282076%7Cl%3A1729517282077; ab.storage.sessionId.dcee0642-d796-4a7b-9e56-a0108e133b07=g%3A1d67431b-d04d-0d88-e77b-d85445c12ee5%7Ce%3A1729519082079%7Cc%3A1729517282077%7Cl%3A1729517282079; _ga_2N7ZM9C56V=GS1.1.1729516185.11.1.1729517282.0.0.173507875; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiIzenRyMHpxZ0BleGFtcGxlLmNvbSIsImV4cCI6MTczMTkzNjQ4MSwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5NTE3MjgxLCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoiM3p0cjB6cWdAZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjBUMTM6Mjg6MDFaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybmtWdGgzN2xCcU9QOWp5dDVQQURBb2JGdVQiLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJua1Z0aDM3bEJxT1A5anl0NVBBREFvYkZ1VCIsInZlcmlmaWVkRW1haWwiOnRydWV9.fggN08Y02fhZ6iSVw3AJIY1Ao4WD0dsK8K0tD2M08hYXsq2gCn-bBMUqttPxznkrmVL9yk2dGQiMX4jyXcK_hZiVAu1h2YDmRGtnzGDdJNgIGyYpgUK1cUAYOcn_oPQbgSeCPdckRCj_OqvISEfjF1fsGroDDjGEjNjzArU_LxCrdJEneKIAcrn5GnDB7xFQ5auyWqblk8Rbu--p0ffhQZgTd68zUulfAVm69iV5A4BWhts9Z_t4QKpDQ3nqeOShIpSoNemlJxfi5aQyZB2AOWngdTZhLOOq50Rs0K1Z-XDofppqDYqWmyHRwVL9DtWxFlp0pAzD-XEbqBRqxM4O2g'
+serverless:
+  enabled: true
+  disabled-gpu: true
+  # 当无法找到指定的浏览器时可以在此配置路径
+  # execPath: /usr/bin/microsoft-edge
+  headless: new
+
+# coze 默认配置；；；内置配置经常变动，难以维护改为配置化。新增webSdk模式，但还未得知速率是否有限制？？？
+coze:
+#  8k:
+#    botId: 114514
+#    version: 9527
+#    scene: 2
+#    isW: false
+#  128k:
+#    botId: 114514
+#    version: 9527
+#    scene: 2
+#    isW: false
+#  images:
+#    botId: 114514
+#    version: 9527
+#    scene: 2
+
+# 多个websdk账号可开启，用于请求计数，超过count数量该账号进入静置区
+  websdk:
+#    counter: 0
+#    model:
+#    accounts:
+#    - email: xxx@gmail.com
+#      password: xxx
+#      validate: xxx@gmail.com
+
+interpreter:
+  baseUrl: http://127.0.0.1:7860
+  echoCode: false
+  ws: true
+
+custom-llm:
+  baseUrl: http://127.0.0.1:8080
+
+# toolCall 默认配置化; 在 flags 关闭时也可用
+toolCall:
+  id: -1
+  enabled: false
+  tasks: false
+
+# 图片放大，domain需要公网可访问的地址
+# key请到https://bigjpg.com获取，每月30次免费
+# 目前注册没有限制，可配置多个key轮询
+#magnify:
+#  - "xxx"
